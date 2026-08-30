@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cgx67nc3x4tq"]
 
 [ext_resource type="PackedScene" uid="uid://ccolff1t6pirw" path="res://Scenes/player.tscn" id="1_i04dx"]
+[ext_resource type="PackedScene" uid="uid://31tkpqnds8l5" path="res://Scenes/Environment/ladder.tscn" id="2_8pvmw"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_86cna"]
 
@@ -19,3 +20,6 @@ shape = SubResource("WorldBoundaryShape2D_86cna")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D" unique_id=57050614]
 mesh = SubResource("QuadMesh_86cna")
+
+[node name="Ladder" parent="." unique_id=1129914566 instance=ExtResource("2_8pvmw")]
+position = Vector2(485, 656)

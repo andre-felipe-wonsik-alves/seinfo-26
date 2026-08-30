@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://31tkpqnds8l5"]
 
+[ext_resource type="Script" uid="uid://bdwh41cywopfj" path="res://Scripts/Components/ClimbableComponent.gd" id="1_soih7"]
+
 [sub_resource type="GDScript" id="GDScript_wv486"]
 script/source = "extends Node2D
 
@@ -14,9 +16,25 @@ func _process(delta: float) -> void:
 [sub_resource type="QuadMesh" id="QuadMesh_u56q8"]
 size = Vector2(1, 10)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_soih7"]
+size = Vector2(1.8897642, 10.000002)
+
 [node name="Ladder" type="Node2D" unique_id=1129914566]
-scale = Vector2(10, 10)
+scale = Vector2(25.400002, 25.400002)
 script = SubResource("GDScript_wv486")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1727541395]
 mesh = SubResource("QuadMesh_u56q8")
+
+[node name="ClimbableComponent" type="Area2D" parent="." unique_id=830907516]
+script = ExtResource("1_soih7")
+metadata/_custom_type_script = "uid://bdwh41cywopfj"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClimbableComponent" unique_id=1133826660]
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_soih7")
+
+[connection signal="area_entered" from="ClimbableComponent" to="ClimbableComponent" method="_on_area_entered"]
+[connection signal="area_exited" from="ClimbableComponent" to="ClimbableComponent" method="_on_area_exited"]
+[connection signal="body_entered" from="ClimbableComponent" to="ClimbableComponent" method="_on_body_entered"]
+[connection signal="body_exited" from="ClimbableComponent" to="ClimbableComponent" method="_on_body_exited"]
