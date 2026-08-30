@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://31tkpqnds8l5"]
+
+[sub_resource type="GDScript" id="GDScript_wv486"]
+script/source = "extends Node2D
+
+@onready var climbable_component: ClimbableComponent = %ClimbableComponent
+
+
+func _process(delta: float) -> void:
+	
+	pass
+"
+
+[sub_resource type="QuadMesh" id="QuadMesh_u56q8"]
+size = Vector2(1, 10)
+
+[node name="Ladder" type="Node2D" unique_id=1129914566]
+scale = Vector2(10, 10)
+script = SubResource("GDScript_wv486")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1727541395]
+mesh = SubResource("QuadMesh_u56q8")

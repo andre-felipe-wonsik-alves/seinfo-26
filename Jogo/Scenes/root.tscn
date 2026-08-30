@@ -1,3 +1,21 @@
 [gd_scene format=3 uid="uid://cgx67nc3x4tq"]
 
+[ext_resource type="PackedScene" uid="uid://ccolff1t6pirw" path="res://Scenes/player.tscn" id="1_i04dx"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_86cna"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_86cna"]
+
 [node name="Root" type="Node2D" unique_id=1342012346]
+
+[node name="Player" parent="." unique_id=1754025780 instance=ExtResource("1_i04dx")]
+position = Vector2(940, 547)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2134475623]
+position = Vector2(0, 770)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1277836427]
+shape = SubResource("WorldBoundaryShape2D_86cna")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D" unique_id=57050614]
+mesh = SubResource("QuadMesh_86cna")

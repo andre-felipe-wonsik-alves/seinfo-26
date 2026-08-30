@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://ccolff1t6pirw"]
+
+[ext_resource type="Script" uid="uid://b8t4d1xecaopc" path="res://Scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="Script" uid="uid://2an7o7ygeo8g" path="res://Scripts/Components/InputComponent.gd" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://dwfp3bw0nq5o0" path="res://Scripts/Components/MovementComponent.gd" id="3_6t5aa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_86cna"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_boogr"]
+
+[node name="Player" type="CharacterBody2D" unique_id=1754025780 groups=["player"]]
+script = ExtResource("1_cvnsp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=257164107]
+scale = Vector2(1, 2)
+shape = SubResource("RectangleShape2D_86cna")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=862427351]
+position = Vector2(-4.7683716e-07, -9.536743e-07)
+scale = Vector2(19.999998, 40)
+mesh = SubResource("QuadMesh_boogr")
+
+[node name="CameraAnchor" type="Node2D" parent="." unique_id=1341206488]
+
+[node name="Camera2D" type="Camera2D" parent="CameraAnchor" unique_id=285595788]
+limit_left = 0
+limit_top = 0
+limit_right = 1920
+limit_bottom = 1080
+
+[node name="InputComponent" type="Node" parent="." unique_id=294980684]
+unique_name_in_owner = true
+script = ExtResource("1_v0iea")
+metadata/_custom_type_script = "uid://2an7o7ygeo8g"
+
+[node name="MovementComponent" type="Node" parent="." unique_id=259944247 node_paths=PackedStringArray("body", "model")]
+unique_name_in_owner = true
+script = ExtResource("3_6t5aa")
+body = NodePath("..")
+model = NodePath("../MeshInstance2D")
+speed = 300.0
+metadata/_custom_type_script = "uid://dwfp3bw0nq5o0"

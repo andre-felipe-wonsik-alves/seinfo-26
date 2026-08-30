@@ -1,0 +1,13 @@
+# Roteiro prática SEINFO 26
+
+1. Criar projeto
+2. Projeto > Configurações do projeto
+    2.1 Janela > Modo > Maximized
+    2.2 Largura: 1920
+    2.3 Altura: 1080
+3. Setar o Input map
+4. Criar os diretórios de Scene e Scripts
+5. Criar scene do player e um formato para ele
+6. Criar o input component
+7. Adicionar o component na node tree do player
+8. Criar o player.gd e linkar o component
