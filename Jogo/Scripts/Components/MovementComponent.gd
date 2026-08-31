@@ -3,25 +3,49 @@ class_name MovementComponent extends Node
 @export var body: CharacterBody2D
 @export var model: Node2D
 @export var speed := 10.0
+@export var run_multiplier := 1.6
+@export var jump_force := 1000.0
 @export var gravity_multiplier := 3.0
+@export var climb_speed_scale := 0.6 # velocidade horizontal reduzida enquanto escala
 
-var direction: Vector2 = Vector2.ZERO
 var can_climb: bool = false
 
-func execute(delta: float) -> void:
+# --- Ações que os States chamam a cada frame de física ---
+# Cada uma mexe só numa parte do velocity. Quem decide QUAIS chamar é o State.
+
+func move_horizontal(dir_x: float, speed_scale: float = 1.0) -> void:
 	if body == null:
 		return
-	
-	body.velocity.x = direction.x * speed
-	
-	# Escalada e Gravidade
-	if can_climb and Input.is_action_pressed("up"):
-		body.velocity.y = direction.y * speed if direction.y != 0 else -speed
-	else:
-		if not body.is_on_floor():
-			body.velocity += body.get_gravity() * delta * gravity_multiplier
-	
-	body.move_and_slide()
+	body.velocity.x = dir_x * speed * speed_scale
+
+
+func apply_gravity(delta: float) -> void:
+	if body == null:
+		return
+	body.velocity += body.get_gravity() * delta * gravity_multiplier
+
+
+func jump() -> void:
+	if body == null:
+		return
+	body.velocity.y = -jump_force
+
+
+func climb(dir_y: float) -> void:
+	if body == null:
+		return
+	body.velocity.y = dir_y * speed
+
+
+func stop_vertical() -> void:
+	if body:
+		body.velocity.y = 0.0
+
+
+func move_and_slide() -> void:
+	if body:
+		body.move_and_slide()
+
 
 func _on_can_climb(value: bool) -> void:
 	can_climb = value
