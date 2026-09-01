@@ -3,13 +3,13 @@
 [ext_resource type="Script" uid="uid://b8t4d1xecaopc" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Script" uid="uid://2an7o7ygeo8g" path="res://Scripts/Components/InputComponent.gd" id="1_v0iea"]
 [ext_resource type="Script" uid="uid://dwfp3bw0nq5o0" path="res://Scripts/Components/MovementComponent.gd" id="3_6t5aa"]
-[ext_resource type="Script" path="res://Scripts/StateMachine/state_machine.gd" id="4_smach"]
-[ext_resource type="Script" path="res://Scripts/StateMachine/States/idle_state.gd" id="5_idle"]
-[ext_resource type="Script" path="res://Scripts/StateMachine/States/walking_state.gd" id="6_walk"]
-[ext_resource type="Script" path="res://Scripts/StateMachine/States/running_state.gd" id="7_run"]
-[ext_resource type="Script" path="res://Scripts/StateMachine/States/jumping_state.gd" id="8_jump"]
-[ext_resource type="Script" path="res://Scripts/StateMachine/States/falling_state.gd" id="9_fall"]
-[ext_resource type="Script" path="res://Scripts/StateMachine/States/climbing_state.gd" id="10_climb"]
+[ext_resource type="Script" uid="uid://c365o2kuisxyr" path="res://Scripts/StateMachine/state_machine.gd" id="4_smach"]
+[ext_resource type="Script" uid="uid://cpqu5l61mlgk4" path="res://Scripts/StateMachine/States/idle_state.gd" id="5_idle"]
+[ext_resource type="Script" uid="uid://ck5q20pc6jyih" path="res://Scripts/StateMachine/States/walking_state.gd" id="6_walk"]
+[ext_resource type="Script" uid="uid://cq3u67vdh2hp0" path="res://Scripts/StateMachine/States/running_state.gd" id="7_run"]
+[ext_resource type="Script" uid="uid://fn4oxjcqf1hw" path="res://Scripts/StateMachine/States/jumping_state.gd" id="8_jump"]
+[ext_resource type="Script" uid="uid://gj455pr7qwmu" path="res://Scripts/StateMachine/States/falling_state.gd" id="9_fall"]
+[ext_resource type="Script" uid="uid://dd0w1yhmejd8d" path="res://Scripts/StateMachine/States/climbing_state.gd" id="10_climb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_86cna"]
 
@@ -48,25 +48,25 @@ model = NodePath("../MeshInstance2D")
 speed = 300.0
 metadata/_custom_type_script = "uid://dwfp3bw0nq5o0"
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node" parent="." unique_id=91702874 node_paths=PackedStringArray("initial_state")]
 unique_name_in_owner = true
 script = ExtResource("4_smach")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=875093828]
 script = ExtResource("5_idle")
 
-[node name="Walking" type="Node" parent="StateMachine"]
+[node name="Walking" type="Node" parent="StateMachine" unique_id=380585337]
 script = ExtResource("6_walk")
 
-[node name="Running" type="Node" parent="StateMachine"]
+[node name="Running" type="Node" parent="StateMachine" unique_id=1441464190]
 script = ExtResource("7_run")
 
-[node name="Jumping" type="Node" parent="StateMachine"]
+[node name="Jumping" type="Node" parent="StateMachine" unique_id=1050144507]
 script = ExtResource("8_jump")
 
-[node name="Falling" type="Node" parent="StateMachine"]
+[node name="Falling" type="Node" parent="StateMachine" unique_id=1598574756]
 script = ExtResource("9_fall")
 
-[node name="Climbing" type="Node" parent="StateMachine"]
+[node name="Climbing" type="Node" parent="StateMachine" unique_id=982902864]
 script = ExtResource("10_climb")
