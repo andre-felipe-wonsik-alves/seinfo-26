@@ -3,17 +3,10 @@ class_name ClimbableComponent extends Area2D
 signal can_climb(can_climb: bool)
 
 func _ready() -> void:
-	if not body_entered.is_connected(_on_body_entered):
-		body_entered.connect(_on_body_entered)
-		
-	if not body_exited.is_connected(_on_body_exited):
-		body_exited.connect(_on_body_exited)
-		
-	if not area_entered.is_connected(_on_area_entered):
-		area_entered.connect(_on_area_entered)
-		
-	if not area_exited.is_connected(_on_area_exited):
-		area_exited.connect(_on_area_exited)
+	body_entered.connect(_on_body_entered)
+	body_exited.connect(_on_body_exited)
+	area_entered.connect(_on_area_entered)
+	area_exited.connect(_on_area_exited)
 
 func _on_area_entered(area: Area2D) -> void:
 	_notify_can_climb(area, true)

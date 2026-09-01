@@ -5,11 +5,12 @@
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_86cna"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_86cna"]
+[sub_resource type="QuadMesh" id="QuadMesh_6t5aa"]
 
 [node name="Root" type="Node2D" unique_id=1342012346]
 
 [node name="Player" parent="." unique_id=1754025780 instance=ExtResource("1_i04dx")]
+top_level = true
 position = Vector2(940, 547)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2134475623]
@@ -19,7 +20,11 @@ position = Vector2(0, 770)
 shape = SubResource("WorldBoundaryShape2D_86cna")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D" unique_id=57050614]
-mesh = SubResource("QuadMesh_86cna")
+modulate = Color(0, 1, 0, 1)
+position = Vector2(956.75, 148.25)
+scale = Vector2(1914.5, 297.5)
+mesh = SubResource("QuadMesh_6t5aa")
 
 [node name="Ladder" parent="." unique_id=1129914566 instance=ExtResource("2_8pvmw")]
+modulate = Color(1, 0.54901963, 0.105882354, 1)
 position = Vector2(485, 656)

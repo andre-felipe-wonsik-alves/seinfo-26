@@ -15,8 +15,10 @@ func execute(delta: float) -> void:
 	body.velocity.x = direction.x * speed
 	
 	# Escalada e Gravidade
-	if can_climb and Input.is_action_pressed("up"):
-		body.velocity.y = direction.y * speed if direction.y != 0 else -speed
+	if can_climb and direction.y != 0:
+		_climb()
+	elif can_climb:
+		_stay()
 	else:
 		if not body.is_on_floor():
 			body.velocity += body.get_gravity() * delta * gravity_multiplier
@@ -25,3 +27,11 @@ func execute(delta: float) -> void:
 
 func _on_can_climb(value: bool) -> void:
 	can_climb = value
+	
+func _climb() -> void:
+	body.velocity.y = direction.y * speed
+
+func _stay() -> void:
+	body.velocity.y = 0
+	
+	

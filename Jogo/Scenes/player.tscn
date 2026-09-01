@@ -6,9 +6,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_86cna"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_boogr"]
+[sub_resource type="QuadMesh" id="QuadMesh_v2a3n"]
 
-[node name="Player" type="CharacterBody2D" unique_id=1754025780 groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1754025780]
 script = ExtResource("1_cvnsp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=257164107]
@@ -16,9 +16,10 @@ scale = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_86cna")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=862427351]
+modulate = Color(0.8, 0, 0.18039216, 1)
 position = Vector2(-4.7683716e-07, -9.536743e-07)
 scale = Vector2(19.999998, 40)
-mesh = SubResource("QuadMesh_boogr")
+mesh = SubResource("QuadMesh_v2a3n")
 
 [node name="CameraAnchor" type="Node2D" parent="." unique_id=1341206488]
 
