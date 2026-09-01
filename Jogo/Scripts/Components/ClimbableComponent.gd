@@ -27,11 +27,16 @@ func _notify_can_climb(node: Node, state: bool) -> void:
 	can_climb.emit(state)
 
 func _find_movement_component(node: Node) -> MovementComponent:
+	# O próprio objeto é o Movement?
 	if node is MovementComponent:
 		return node
+	
+	# É um dos filhos dele?
 	for child in node.get_children():
 		if child is MovementComponent:
 			return child
+			
+	# É um dos irmãos dele?
 	if node.get_parent():
 		for child in node.get_parent().get_children():
 			if child is MovementComponent:

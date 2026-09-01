@@ -69,9 +69,9 @@ public main()
     Imagem imagem = new Imagem();
 
     PngImagem png = new PngImagem("imagem.png");
-    png.carregar();
+    png.carregar(imagem);
 
-    DesenhoImagem desenho = new DesenhoImagem(imagem);
+    DesenhoImagem desenho = new DesenhoImagem(imagem, pincel);
     desenho.desenharLinha(10,10,20,20);
     desenho.desenharPonto(10,20);
 
