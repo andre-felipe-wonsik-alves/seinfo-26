@@ -48,7 +48,7 @@ func physics_update(delta: float) -> void:
 		current_state.physics_update(delta)
 
 
-## Método público que os estados chamam para solicitar uma mudança de estado.
+## Método público que os estados chamam para solicitar uma mudança de estado
 func transition_to(state_name: StringName) -> void:
 	# 1. Valida se o estado solicitado realmente existe registrado na máquina
 	if not states.has(state_name):

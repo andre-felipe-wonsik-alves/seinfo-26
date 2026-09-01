@@ -1,6 +1,6 @@
 class_name FallingState extends State
 
-## Estado de Queda (Falling).
+## Estado de Queda (Falling)
 ## Ativo sempre que o personagem está no ar se movendo para baixo (seja após o pulo ou ao cair de uma borda)
 
 

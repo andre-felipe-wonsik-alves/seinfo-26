@@ -1,8 +1,8 @@
 class_name InputComponent extends Node
 
-## Componente responsável exclusivamente por capturar e armazenar os inputs (comandos do jogador).
+## Componente responsável exclusivamente por capturar e armazenar os inputs (comandos do jogador)
 ## Separar a leitura de input em um componente evita que o código de movimentação ou estados
-## fique poluído com chamadas diretas de Input da engine.
+## fique poluído com chamadas diretas de Input da engine
 
 # Vetor 2D que guarda a direção do movimento (X para esquerda/direita, Y para cima/baixo)
 var move_dir: Vector2 = Vector2.ZERO
@@ -17,7 +17,7 @@ var run_pressed: bool = false
 var up_pressed: bool = false
 
 
-## Função chamada a cada frame (geralmente pelo Player) para atualizar o estado dos inputs.
+## Função chamada a cada frame (geralmente pelo Player) para atualizar o estado dos inputs
 func update() -> void:
 	# get_vector normaliza as entradas  retornando um Vector2 (-1 a 1 em X e Y)
 	move_dir = Input.get_vector("left", "right", "up", "down")
