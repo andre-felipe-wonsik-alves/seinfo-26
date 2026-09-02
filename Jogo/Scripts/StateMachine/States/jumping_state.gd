@@ -10,6 +10,8 @@ func enter() -> void:
 	# O impulso pra cima acontece só UMA vez, exatamente ao entrar no estado
 	# É por isso que "enter()" existe: sem ele, teríamos que controla
 	# manualmente "já pulei ou não" com mais uma variável booleana solta
+	player.play_animation("jump")
+	AudioUtils.play_audio(self, load("res://Assets/brackeys_platformer_assets/sounds/jump.wav"), -10.0)
 	player.movement_component.jump()
 
 

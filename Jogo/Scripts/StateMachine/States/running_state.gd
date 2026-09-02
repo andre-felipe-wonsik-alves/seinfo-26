@@ -3,6 +3,9 @@ class_name RunningState extends State
 ## Estado de Corrida (Running)
 ## Ativo quando o jogador está se movendo no chão com o modificador de velocidade (botão de corrida pressionado)
 
+func enter() -> void:
+	player.play_animation("run")
+	
 
 func physics_update(delta: float) -> void:
 	var input := player.input_component

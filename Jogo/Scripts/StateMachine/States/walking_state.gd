@@ -3,6 +3,8 @@ class_name WalkingState extends State
 ## Estado de Caminhada (Walking)
 ## Ativo quando o jogador está no chão se movendo em velocidade normal
 
+func enter() -> void:
+	player.play_animation("walk")
 
 func physics_update(delta: float) -> void:
 	var input := player.input_component

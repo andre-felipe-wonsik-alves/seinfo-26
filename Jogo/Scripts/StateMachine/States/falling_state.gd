@@ -3,6 +3,8 @@ class_name FallingState extends State
 ## Estado de Queda (Falling)
 ## Ativo sempre que o personagem está no ar se movendo para baixo (seja após o pulo ou ao cair de uma borda)
 
+func enter() -> void:
+	player.play_animation("jump")
 
 func physics_update(delta: float) -> void:
 	var input := player.input_component

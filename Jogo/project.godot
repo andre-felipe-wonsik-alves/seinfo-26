@@ -11,16 +11,17 @@ config_version=5
 [application]
 
 config/name="SEINFO 26"
+run/main_scene="uid://cgx67nc3x4tq"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=320
+window/size/viewport_height=180
 window/size/mode=2
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/aspect="ignore"
 
 [input]
 
