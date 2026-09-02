@@ -3,6 +3,13 @@
 [ext_resource type="Script" uid="uid://b8t4d1xecaopc" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Script" uid="uid://2an7o7ygeo8g" path="res://Scripts/Components/InputComponent.gd" id="1_v0iea"]
 [ext_resource type="Script" uid="uid://dwfp3bw0nq5o0" path="res://Scripts/Components/MovementComponent.gd" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://cchjualpsj40j" path="res://Scripts/StateMachine/state_machine.gd" id="4_vgqql"]
+[ext_resource type="Script" uid="uid://cg21epju0b1o1" path="res://Scripts/StateMachine/States/idle_state.gd" id="5_tx1dd"]
+[ext_resource type="Script" uid="uid://rp5vdf4yrlap" path="res://Scripts/StateMachine/States/walking_state.gd" id="6_gymyn"]
+[ext_resource type="Script" uid="uid://q1rmg322d5xy" path="res://Scripts/StateMachine/States/running_state.gd" id="7_pu2lt"]
+[ext_resource type="Script" uid="uid://csxgmebla7i0i" path="res://Scripts/StateMachine/States/jumping_state.gd" id="8_ukyrk"]
+[ext_resource type="Script" uid="uid://blo1bsf0hv3kr" path="res://Scripts/StateMachine/States/falling_state.gd" id="9_7dp3o"]
+[ext_resource type="Script" uid="uid://dgwqkdg1x6s3e" path="res://Scripts/StateMachine/States/climbing_state.gd" id="10_h4iuc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_86cna"]
 
@@ -41,3 +48,33 @@ body = NodePath("..")
 model = NodePath("../MeshInstance2D")
 speed = 300.0
 metadata/_custom_type_script = "uid://dwfp3bw0nq5o0"
+
+[node name="StateMachine" type="Node" parent="." unique_id=1515895539 node_paths=PackedStringArray("initial_state")]
+unique_name_in_owner = true
+script = ExtResource("4_vgqql")
+initial_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://cchjualpsj40j"
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1152976743]
+script = ExtResource("5_tx1dd")
+metadata/_custom_type_script = "uid://cg21epju0b1o1"
+
+[node name="Walking" type="Node" parent="StateMachine" unique_id=167927394]
+script = ExtResource("6_gymyn")
+metadata/_custom_type_script = "uid://rp5vdf4yrlap"
+
+[node name="Running" type="Node" parent="StateMachine" unique_id=360193843]
+script = ExtResource("7_pu2lt")
+metadata/_custom_type_script = "uid://q1rmg322d5xy"
+
+[node name="Jumping" type="Node" parent="StateMachine" unique_id=963591037]
+script = ExtResource("8_ukyrk")
+metadata/_custom_type_script = "uid://csxgmebla7i0i"
+
+[node name="Falling" type="Node" parent="StateMachine" unique_id=1487047555]
+script = ExtResource("9_7dp3o")
+metadata/_custom_type_script = "uid://blo1bsf0hv3kr"
+
+[node name="Climbing" type="Node" parent="StateMachine" unique_id=388915034]
+script = ExtResource("10_h4iuc")
+metadata/_custom_type_script = "uid://dgwqkdg1x6s3e"

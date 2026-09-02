@@ -4,34 +4,41 @@ class_name MovementComponent extends Node
 @export var model: Node2D
 @export var speed := 10.0
 @export var gravity_multiplier := 3.0
+@export var jump_force := 1000.0
+@export var climb_speed_scale := 0.6
+@export var run_multiplier := 1.6
 
-var direction: Vector2 = Vector2.ZERO
 var can_climb: bool = false
 
-func execute(delta: float) -> void:
+
+func move_horizontal(dir_x: float, speed_scale: float = 1.0) -> void:
 	if body == null:
 		return
+	body.velocity.x = dir_x * speed * speed_scale
 	
-	body.velocity.x = direction.x * speed
-	
-	# Escalada e Gravidade
-	if can_climb and direction.y != 0:
-		_climb()
-	elif can_climb:
-		_stay()
-	else:
-		if not body.is_on_floor():
-			body.velocity += body.get_gravity() * delta * gravity_multiplier
-	
-	body.move_and_slide()
 
+func apply_gravity(delta: float) -> void:
+	if body == null:
+		return
+	body.velocity += body.get_gravity() * delta * gravity_multiplier
+	
+func jump() -> void:
+	if body == null:
+		return
+	body.velocity.y = -jump_force
+	
+func climb(dir_y: float) -> void:
+	if body == null:
+		return
+	body.velocity.y = dir_y * speed
+
+func stop_vertical() -> void:
+	if body:
+		body.velocity.y = 0.0
+		
 func _on_can_climb(value: bool) -> void:
 	can_climb = value
-	
-func _climb() -> void:
-	body.velocity.y = direction.y * speed
 
-func _stay() -> void:
-	body.velocity.y = 0
-	
-	
+func move_and_slide() -> void:
+	if body:
+		body.move_and_slide()
