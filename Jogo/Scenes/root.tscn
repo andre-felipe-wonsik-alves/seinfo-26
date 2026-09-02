@@ -5,7 +5,7 @@
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_86cna"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_86cna"]
+[sub_resource type="QuadMesh" id="QuadMesh_6t5aa"]
 
 [node name="Root" type="Node2D" unique_id=1342012346]
 

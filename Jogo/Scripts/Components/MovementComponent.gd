@@ -67,3 +67,11 @@ func move_and_slide() -> void:
 ## Callback acionado por sinais (ex: ClimbableComponent) para atualizar se o jogador pode ou não escalar
 func _on_can_climb(value: bool) -> void:
 	can_climb = value
+	
+func _climb() -> void:
+	body.velocity.y = direction.y * speed
+
+func _stay() -> void:
+	body.velocity.y = 0
+	
+	
