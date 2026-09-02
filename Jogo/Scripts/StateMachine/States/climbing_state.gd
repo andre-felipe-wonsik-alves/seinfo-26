@@ -10,6 +10,7 @@ class_name ClimbingState extends State
 func enter() -> void:
 	# Zera a velocidade vertical ao agarrar na escada — sem isso, o impulso
 	# de uma queda ou pulo anterior "vazaria" pro início da escalada
+	player.play_animation("idle")
 	player.movement_component.stop_vertical()
 
 

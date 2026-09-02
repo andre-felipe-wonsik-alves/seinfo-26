@@ -7,6 +7,8 @@ class_name FallingState extends State
 func physics_update(delta: float) -> void:
 	var input := player.input_component
 	var movement := player.movement_component
+	
+	player.play_animation("jump")
 
 	# Permite que o jogador ainda controle a direção horizontal durante a queda
 	movement.move_horizontal(input.move_dir.x)

@@ -7,6 +7,7 @@ class_name IdleState extends State
 ## Ao entrar no estado Idle:
 ## Garante que a velocidade horizontal seja zerada imediatamente
 func enter() -> void:
+	player.play_animation("idle")
 	player.movement_component.move_horizontal(0.0)
 
 

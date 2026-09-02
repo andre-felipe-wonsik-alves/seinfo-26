@@ -7,6 +7,8 @@ class_name RunningState extends State
 func physics_update(delta: float) -> void:
 	var input := player.input_component
 	var movement := player.movement_component
+	
+	player.play_animation("run")
 
 	# Aplica a velocidade horizontal multiplicada pelo fator de corrida (run_multiplier)
 	movement.move_horizontal(input.move_dir.x, movement.run_multiplier)

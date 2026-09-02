@@ -7,6 +7,8 @@ class_name WalkingState extends State
 func physics_update(delta: float) -> void:
 	var input := player.input_component
 	var movement := player.movement_component
+	
+	player.play_animation("walk")
 
 	# Aplica velocidade horizontal padrão (velocidade normal de caminhada)
 	movement.move_horizontal(input.move_dir.x)

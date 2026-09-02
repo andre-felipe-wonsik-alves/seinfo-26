@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://c3h6pnln2vtpj"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_okvwm"]
+
+[sub_resource type="Gradient" id="Gradient_okvwm"]
+offsets = PackedFloat32Array(0, 0.47530866, 0.74691355)
+colors = PackedColorArray(1, 1, 0, 1, 1, 0, 0, 1, 0.103743516, 0.10374353, 0.103743516, 1)
+
+[node name="Torch" type="Node2D" unique_id=1096557581]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1511997602]
+modulate = Color(0.52156866, 0.25490198, 0, 1)
+position = Vector2(0, -1.75)
+scale = Vector2(2, 9)
+mesh = SubResource("QuadMesh_okvwm")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="." unique_id=312907485]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(5.9604645e-08, -5)
+scale = Vector2(3, 3.126)
+mesh = SubResource("QuadMesh_okvwm")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=330848126]
+position = Vector2(0, -5)
+amount = 30
+emission_shape = 1
+emission_sphere_radius = 1.5
+direction = Vector2(0, -1)
+spread = 16.49
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+scale_amount_min = 2.0
+scale_amount_max = 2.5
+color_ramp = SubResource("Gradient_okvwm")

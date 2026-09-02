@@ -2,16 +2,110 @@
 
 [ext_resource type="PackedScene" uid="uid://ccolff1t6pirw" path="res://Scenes/player.tscn" id="1_i04dx"]
 [ext_resource type="PackedScene" uid="uid://31tkpqnds8l5" path="res://Scenes/Environment/ladder.tscn" id="2_8pvmw"]
+[ext_resource type="AudioStream" uid="uid://cvsyp3fbcq7bp" path="res://Assets/brackeys_platformer_assets/music/time_for_adventure.mp3" id="3_vnucn"]
+[ext_resource type="PackedScene" uid="uid://c3h6pnln2vtpj" path="res://Scenes/Environment/torch.tscn" id="4_c3mwy"]
+[ext_resource type="Texture2D" uid="uid://bbw3l7ns3qacb" path="res://Assets/MountainsLayers/far-clouds.png" id="5_4g5cr"]
+[ext_resource type="Texture2D" uid="uid://nei8g3fblyr7" path="res://Assets/MountainsLayers/near-clouds.png" id="6_ckhy6"]
+[ext_resource type="Texture2D" uid="uid://bcnsdxg457gf4" path="res://Assets/MountainsLayers/far-mountains.png" id="7_dun2r"]
+[ext_resource type="Texture2D" uid="uid://cub65x0y0ym76" path="res://Assets/MountainsLayers/mountains.png" id="8_r3lo5"]
+[ext_resource type="Shader" uid="uid://cycilkgd36a86" path="res://Shaders/WindSway.gdshader" id="9_fu36u"]
+[ext_resource type="Texture2D" uid="uid://dxjs1s2ge2yl0" path="res://Assets/MountainsLayers/trees.png" id="9_qtxxq"]
+[ext_resource type="Texture2D" uid="uid://7moe0t1gmxba" path="res://Assets/brackeys_platformer_assets/sprites/knight.png" id="10_8fnbn"]
+[ext_resource type="Shader" uid="uid://dmj8pi7c477d8" path="res://PalleteSwapper.gdshader" id="10_a6f85"]
+[ext_resource type="Shader" uid="uid://pscsyxc7o8kj" path="res://Shaders/CRT.gdshader" id="13_lwnbm"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_86cna"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_86cna"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_c3mwy"]
+load_path = "res://.godot/imported/sky.png-1d53cae6a08928027c918f6cb4431dd9.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fu36u"]
+shader = ExtResource("9_fu36u")
+shader_parameter/wind_start_threshold = 0.1
+shader_parameter/wind_end_threshold = 2.0
+shader_parameter/wind_end_threshold_2 = 0.1
+shader_parameter/wind_strength = 0.10000000475
+shader_parameter/wind_speed = 0.70000002673023
+shader_parameter/scale = 2.0
+
+[sub_resource type="Gradient" id="Gradient_a6f85"]
+offsets = PackedFloat32Array(0, 0.23880596, 0.5597015, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.7966594, 0, 0.36535254, 1, 0.5572906, 0.0035433858, 0.91379297, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_a6f85"]
+gradient = SubResource("Gradient_a6f85")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8fnbn"]
+shader = ExtResource("10_a6f85")
+shader_parameter/newPalette = SubResource("GradientTexture1D_a6f85")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6f85"]
+atlas = ExtResource("10_8fnbn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fu36u"]
+atlas = ExtResource("10_8fnbn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwnbm"]
+atlas = ExtResource("10_8fnbn")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20eh2"]
+atlas = ExtResource("10_8fnbn")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_okvwm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6f85")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fu36u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwnbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20eh2")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lwnbm"]
+shader = ExtResource("13_lwnbm")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 1.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
 [node name="Root" type="Node2D" unique_id=1342012346]
 
 [node name="Player" parent="." unique_id=1754025780 instance=ExtResource("1_i04dx")]
 top_level = true
-position = Vector2(940, 547)
+position = Vector2(940, 546)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2134475623]
 position = Vector2(0, 770)
@@ -28,3 +122,100 @@ mesh = SubResource("QuadMesh_86cna")
 [node name="Ladder" parent="." unique_id=1129914566 instance=ExtResource("2_8pvmw")]
 modulate = Color(1, 0.54901963, 0.105882354, 1)
 position = Vector2(485, 656)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=119996991]
+stream = ExtResource("3_vnucn")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
+
+[node name="Torch" parent="." unique_id=1096557581 instance=ExtResource("4_c3mwy")]
+position = Vector2(513, 769)
+
+[node name="Background" type="Node2D" parent="." unique_id=1327947915]
+z_index = -1024
+texture_filter = 1
+position = Vector2(408, 259)
+
+[node name="Parallax2D" type="Parallax2D" parent="Background" unique_id=425991569]
+scroll_scale = Vector2(0, 0.001)
+scroll_offset = Vector2(-250, -199)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D" unique_id=858043109]
+position = Vector2(2, 18)
+texture = SubResource("CompressedTexture2D_c3mwy")
+
+[node name="Parallax2D2" type="Parallax2D" parent="Background" unique_id=1799813895]
+scroll_scale = Vector2(0.01, 0.01)
+scroll_offset = Vector2(-250, -199)
+repeat_size = Vector2(128, 0)
+autoscroll = Vector2(0.2, 0)
+repeat_times = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D2" unique_id=1040831076]
+position = Vector2(2, 18)
+texture = ExtResource("5_4g5cr")
+
+[node name="Parallax2D3" type="Parallax2D" parent="Background" unique_id=1933095840]
+scroll_scale = Vector2(0.02, 0.02)
+scroll_offset = Vector2(-250, -199)
+repeat_size = Vector2(144, 0)
+autoscroll = Vector2(0.2, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D3" unique_id=562163866]
+position = Vector2(2, 18)
+texture = ExtResource("6_ckhy6")
+
+[node name="Parallax2D4" type="Parallax2D" parent="Background" unique_id=622085933]
+scroll_scale = Vector2(0.03, 0.03)
+scroll_offset = Vector2(-250, -199)
+repeat_size = Vector2(160, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D4" unique_id=1785508671]
+position = Vector2(2, 18)
+texture = ExtResource("7_dun2r")
+
+[node name="Parallax2D5" type="Parallax2D" parent="Background" unique_id=1274143019]
+scroll_scale = Vector2(0.04, 0.03)
+scroll_offset = Vector2(-250, -199)
+repeat_size = Vector2(160, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D5" unique_id=508546839]
+position = Vector2(2, 18)
+texture = ExtResource("8_r3lo5")
+
+[node name="Parallax2D6" type="Parallax2D" parent="Background" unique_id=109304985]
+scroll_scale = Vector2(0.05, 0.05)
+scroll_offset = Vector2(-250, -199)
+repeat_size = Vector2(240, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D6" unique_id=675908479]
+material = SubResource("ShaderMaterial_fu36u")
+position = Vector2(2, 18)
+texture = ExtResource("9_qtxxq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=262401429]
+texture_filter = 1
+material = SubResource("ShaderMaterial_8fnbn")
+position = Vector2(614, 759)
+sprite_frames = SubResource("SpriteFrames_okvwm")
+animation = &"idle"
+autoplay = "idle"
+frame = 2
+frame_progress = 0.21511513
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=45318475]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=2134263774]
+z_index = 2014
+material = SubResource("ShaderMaterial_lwnbm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
