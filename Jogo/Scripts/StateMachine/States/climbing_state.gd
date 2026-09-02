@@ -18,9 +18,15 @@ func physics_update(_delta: float) -> void:
 	var input := player.input_component
 	var movement := player.movement_component
 
-	# Se o jogador saiu dos limites da escada (can_climb virou false), volta a cair
+	# Se o jogador saiu dos limites da escada (can_climb virou false):
+	# - Saiu pelo topo (subindo, velocity.y <= 0) → vai para Idle para pousar na plataforma
+	# - Saiu pelo lado/baixo → volta a cair normalmente
 	if not movement.can_climb:
-		state_machine.transition_to("Falling")
+		if movement.body.velocity.y <= 0.0:
+			movement.stop_vertical()
+			state_machine.transition_to("Idle")
+		else:
+			state_machine.transition_to("Falling")
 		return
 
 	# Na escada NÃO aplicamos gravidade (o personagem fica parado se o jogador não mover)
